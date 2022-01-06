@@ -10,19 +10,28 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //getSquare();          //1.1
-            //drawTriangle();       //1.2
-            //drawAnotherTriangle();//1.3
-            //drawXMassTree();      //1.4
-            //sumOfNumbers();       //1.5
-            //fontAdjustment();     //1.6
-            //arrayProcessing();    //1.7
-            //noPositive();         //1.8
-            //nonNegativeSum();     //1.9
-            //sum2DArray();         //1.10
+            getSquare();          //1.1
+            drawTriangle();       //1.2
+            drawAnotherTriangle();//1.3
+            drawXMassTree();      //1.4
+            sumOfNumbers();       //1.5
+            fontAdjustment();     //1.6
+            arrayProcessing();    //1.7
+            noPositive();         //1.8
+            nonNegativeSum();     //1.9
+            sum2DArray();         //1.10
 
             
 
+        }
+        static int readOnlyNumber()//метод считывает значение из консоли и проверяет, число ли это.
+        {
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out int res)) return res;
+                else Console.WriteLine("Can u input number, try again");         
+            }
+            
         }
         static void getSquare()         //1.1
         {
@@ -31,9 +40,9 @@ namespace ConsoleApp1
             while (true)
             {
                 Console.Write("Input a: ");
-                a = Convert.ToInt32(Console.ReadLine());
+                a = readOnlyNumber();
                 Console.Write("Input b: ");
-                b = Convert.ToInt32(Console.ReadLine());
+                b = readOnlyNumber();
                 if (a <= 0 || b <= 0)
                 {
                     Console.WriteLine("Can u input positive numbers, try again");
@@ -46,8 +55,8 @@ namespace ConsoleApp1
         static void drawTriangle()      //1.2
         {
             Console.Write("Input N: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            for(int i=0; i<n; i++)
+            int n = readOnlyNumber();
+            for (int i=0; i<n; i++)
             {
                 for(int j=0; j<=i; j++)
                 {
@@ -60,7 +69,7 @@ namespace ConsoleApp1
         static void drawAnotherTriangle()//1.3
         {
             Console.Write("Input N: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            int n = readOnlyNumber();
 
             for (int i = 0; i < n; i++)
             {
@@ -84,7 +93,7 @@ namespace ConsoleApp1
         static void drawXMassTree()     //1.4
         {
             Console.Write("Input N: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            int n = readOnlyNumber();
 
             for (int i = 0, countOfTriangle = 0; i < n; i++)
             {
@@ -142,7 +151,7 @@ namespace ConsoleApp1
                 }
 
                 //ввод значения и корректировка индекса для работы с листом
-                int index = Convert.ToInt32(Console.ReadLine()) - 1;
+                int index = readOnlyNumber() - 1;
 
                 //проверка, есть ли уже в листе такой параметр. если нет - добвляет, если есть - удаляет
                 if (myFontParams.Contains(fontParams[index])){
