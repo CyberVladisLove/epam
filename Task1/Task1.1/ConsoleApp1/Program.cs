@@ -10,21 +10,21 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            getSquare();          //1.1
-            drawTriangle();       //1.2
-            drawAnotherTriangle();//1.3
-            drawXMassTree();      //1.4
-            sumOfNumbers();       //1.5
-            fontAdjustment();     //1.6
-            arrayProcessing();    //1.7
-            noPositive();         //1.8
-            nonNegativeSum();     //1.9
-            sum2DArray();         //1.10
+            GetSquare();          //1.1
+            DrawTriangle();       //1.2
+            DrawAnotherTriangle();//1.3
+            DrawXMassTree();      //1.4
+            SumOfNumbers();       //1.5
+            FontAdjustment();     //1.6
+            ArrayProcessing();    //1.7
+            NoPositive();         //1.8
+            NonNegativeSum();     //1.9
+            Sum2DArray();         //1.10
 
-            
+
 
         }
-        static int readOnlyNumber()//метод считывает значение из консоли и проверяет, число ли это.
+        static int ReadOnlyNumber()//метод считывает значение из консоли и проверяет, число ли это.
         {
             while (true)
             {
@@ -33,16 +33,16 @@ namespace ConsoleApp1
             }
             
         }
-        static void getSquare()         //1.1
+        static void GetSquare()         //1.1
         {
             int a;
             int b;
             while (true)
             {
                 Console.Write("Input a: ");
-                a = readOnlyNumber();
+                a = ReadOnlyNumber();
                 Console.Write("Input b: ");
-                b = readOnlyNumber();
+                b = ReadOnlyNumber();
                 if (a <= 0 || b <= 0)
                 {
                     Console.WriteLine("Can u input positive numbers, try again");
@@ -52,10 +52,10 @@ namespace ConsoleApp1
             }
             Console.WriteLine($"Square: {a * b}");
         }
-        static void drawTriangle()      //1.2
+        static void DrawTriangle()      //1.2
         {
             Console.Write("Input N: ");
-            int n = readOnlyNumber();
+            int n = ReadOnlyNumber();
             for (int i=0; i<n; i++)
             {
                 for(int j=0; j<=i; j++)
@@ -66,10 +66,10 @@ namespace ConsoleApp1
 
             }
         }
-        static void drawAnotherTriangle()//1.3
+        static void DrawAnotherTriangle()//1.3
         {
             Console.Write("Input N: ");
-            int n = readOnlyNumber();
+            int n = ReadOnlyNumber();
 
             for (int i = 0; i < n; i++)
             {
@@ -90,10 +90,10 @@ namespace ConsoleApp1
 
             }
         }
-        static void drawXMassTree()     //1.4
+        static void DrawXMassTree()     //1.4
         {
             Console.Write("Input N: ");
-            int n = readOnlyNumber();
+            int n = ReadOnlyNumber();
 
             for (int i = 0, countOfTriangle = 0; i < n; i++)
             {
@@ -112,7 +112,7 @@ namespace ConsoleApp1
                 if (countOfTriangle == n) break;
             }
         }
-        static void sumOfNumbers()      //1.5
+        static void SumOfNumbers()      //1.5
         {
             int sum = 0;
             for (int i = 3; i < 1000; i++)
@@ -125,7 +125,7 @@ namespace ConsoleApp1
             Console.WriteLine($"sum numbers /3 /5 before 1000: {sum}");
 
         }
-        static void fontAdjustment()    //1.6
+        static void FontAdjustment()    //1.6
         {
             List<String> fontParams = new();
             List<String> myFontParams = new();
@@ -151,7 +151,7 @@ namespace ConsoleApp1
                 }
 
                 //ввод значения и корректировка индекса для работы с листом
-                int index = readOnlyNumber() - 1;
+                int index = ReadOnlyNumber() - 1;
 
                 //проверка, есть ли уже в листе такой параметр. если нет - добвляет, если есть - удаляет
                 if (myFontParams.Contains(fontParams[index])){
@@ -161,7 +161,7 @@ namespace ConsoleApp1
             }
 
         }
-        static void arrayProcessing()   //1.7
+        static void ArrayProcessing()   //1.7
         {
             int[] arr = new int[10];
             Console.Write("arr:");
@@ -207,7 +207,7 @@ namespace ConsoleApp1
             }
             Console.WriteLine();
         }
-        static void noPositive()        //1.8
+        static void NoPositive()        //1.8
         {
             int[,,] arr = new int[3,3,3];
             
@@ -223,7 +223,7 @@ namespace ConsoleApp1
             }
 
         }
-        static void nonNegativeSum()    //1.9
+        static void NonNegativeSum()    //1.9
         {
             int[] arr = new int[5] {1,4,0,-1,-2};
             int sum = 0;
@@ -233,7 +233,7 @@ namespace ConsoleApp1
             }
             Console.WriteLine(sum);
         }
-        static void sum2DArray()        //1.10
+        static void Sum2DArray()        //1.10
         {
             int[,] arr = new int[3, 3] { {1, 4, 0 }, { 1, 2, 5 }, { 0, 2, 8 } };
             int sum = 0;
