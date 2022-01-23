@@ -9,7 +9,7 @@ using game.Interfaces;
 namespace game
 {
     //препятствие (камни и тд..)
-    abstract class Obstacle : Unit, IStopable
+    abstract class Obstacle : Unit
     {
         public Obstacle(Point pos) : base(pos)
         {

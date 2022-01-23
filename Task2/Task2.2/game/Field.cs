@@ -97,7 +97,7 @@ namespace game
                             IContactable unitIC = _units[i] as IContactable;
                             unitIC.ContactWithCharacter(c);
                         }                      
-                        if (_units[i] is IStopable) return;
+                        if (_units[i] is Obstacle) return;
                     }                   
                 }
                 int x = c.Position.X;

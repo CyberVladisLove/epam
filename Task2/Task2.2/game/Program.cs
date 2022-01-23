@@ -76,8 +76,6 @@ namespace game
             Console.WriteLine("Совет - не зажимайте долго клавиши wasd. Одно движение - одно нажатие");
             Console.WriteLine("Нажмите Enter для начала игры");
             Console.ReadLine();
-            
-            
 
             Character c = new(name, new(4, 4));
             Wolf w = new(new(10, 10));
