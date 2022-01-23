@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP
+namespace CustomLib
 {
-    class CustomString
+    public class CustomString
     {
-        private char[] charArr;
+        private char[] _charArr;
         public CustomString() : this(Array.Empty<char>()) { }
         public CustomString(string str) : this(str.ToCharArray()) { }
-        public CustomString(char[] charArr)
+        public CustomString(char[] _charArr)
         {
-            this.charArr = charArr;
+            this._charArr = _charArr;
         }
         public char[] CharArr
         {
             get
             {
-                return charArr;
+                return _charArr;
             }
             set
             {
-                charArr = value;
+                _charArr = value;
             }
         }
         public int Length
         {
-            get { return charArr.Length; }
+            get { return _charArr.Length; }
         }
 
         //indexer
@@ -40,9 +40,9 @@ namespace OOP
 
         //Equals
         #region 
-        public bool Equals(char[] charArr)
+        public bool Equals(char[] _charArr)
         {
-            return Equals(new CustomString(charArr));
+            return Equals(new CustomString(_charArr));
         }
         public bool Equals(string str)
         {
@@ -51,7 +51,7 @@ namespace OOP
         public bool Equals(CustomString customStr)
         {
             if (Length != customStr.Length) return false;
-            
+
 
             for (int i = 0; i < Length; i++)
             {
@@ -60,17 +60,33 @@ namespace OOP
 
             return true;
         }
-        #endregion
+        public override bool Equals(object? obj)
+        {
+            return obj is CustomString cs && Equals(cs);
 
+        }
+        public static bool operator ==(CustomString customStr1, CustomString customStr2)
+        {
+            return customStr1.Equals(customStr2);
+        }
+        public static bool operator !=(CustomString customStr1, CustomString customStr2)
+        {
+            return !(customStr1 == customStr2);
+        }
+        #endregion
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_charArr);
+        }
         //Contains
         #region
         public bool Contains(char ch)
         {
             return Contains(new CustomString(new char[] { ch }));
         }
-        public bool Contains(char[] charArr)
+        public bool Contains(char[] _charArr)
         {
-            return Contains(new CustomString(charArr));
+            return Contains(new CustomString(_charArr));
         }
         public bool Contains(string str)
         {
@@ -107,11 +123,11 @@ namespace OOP
         }
         public static CustomString operator +(CustomString customStr1, CustomString customStr2)
         {
-            char[] charArr = new char[customStr1.Length + customStr2.Length];
-            CustomString res = new(charArr);
-            for(int i = 0; i< customStr1.Length; i++)
+            char[] _charArr = new char[customStr1.Length + customStr2.Length];
+            CustomString res = new(_charArr);
+            for (int i = 0; i < customStr1.Length; i++)
             {
-                res[i] = customStr1[i];     
+                res[i] = customStr1[i];
             }
             for (int i = customStr1.Length; i < res.Length; i++)
             {
@@ -136,7 +152,7 @@ namespace OOP
 
         public char[] ToCharArray()
         {
-            return charArr;
+            return _charArr;
         }
 
 
@@ -187,7 +203,7 @@ namespace OOP
         {
             if (Length == 0) return "";
             StringBuilder sb = new();
-            foreach (char ch in charArr) sb.Append(ch);
+            foreach (char ch in _charArr) sb.Append(ch);
 
             return sb.ToString();
         }

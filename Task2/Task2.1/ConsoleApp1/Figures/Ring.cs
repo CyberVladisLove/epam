@@ -49,7 +49,7 @@ namespace OOP
         
         public override string ToString()
         {
-            return $"Ring - center in {start}; big radius: {r}; little radius: {r_little}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
+            return $"Ring: center in {start}; big radius: {r}; little radius: {r_little}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
         }
     }
 }

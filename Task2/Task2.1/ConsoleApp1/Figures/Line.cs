@@ -44,7 +44,7 @@ namespace OOP
         
         public override string ToString()
         {
-            return $"Line - start{start}, finish{finish}; length: {Math.Round(Length, 2)}";
+            return $"Line: start{start} finish{finish}; length: {Math.Round(Length, 2)}";
         }
     }
 }

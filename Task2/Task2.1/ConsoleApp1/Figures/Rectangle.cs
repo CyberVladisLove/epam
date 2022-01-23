@@ -13,7 +13,11 @@ namespace OOP
         protected Point diagonalPoint;
         public Rectangle(Point start, Point diagonalPoint) : base(start)
         {
-            if (start.Equals(diagonalPoint)) Program.ThrowException(this, "совпадение точек"); 
+            if (start.Equals(diagonalPoint)) Program.ThrowException(this, "совпадение точек");
+            if (start.X == diagonalPoint.X || start.Y == diagonalPoint.Y)
+            {
+                Program.ThrowException(this, "наклонные прямоугольники в данной версии приложения не поддерживаются");
+            }
             else this.diagonalPoint = diagonalPoint;
             
         }
@@ -67,7 +71,7 @@ namespace OOP
         {
             string whoAmI = "Rectangle";
             if (Height == Width) whoAmI = "Square";
-            return $"{whoAmI} - points: {start} {P2} {diagonalPoint} {P4}; area: {Area}; length: {Length}";
+            return $"{whoAmI}: points: {start} {P2} {diagonalPoint} {P4}; area: {Area}; length: {Length}";
         }
     }
 }

@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CustomLib">
-      <HintPath>..\CustomLib\bin\Debug\net5.0\CustomLib.dll</HintPath>
+      <HintPath>..\..\Task2.1\CustomLib\bin\Debug\net5.0\CustomLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

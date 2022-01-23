@@ -78,7 +78,7 @@ namespace OOP
         
         public override string ToString()
         {
-            return $"Triangle - points: {start} {p2} {p3}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
+            return $"Triangle: points: {start} {p2} {p3}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
         }
     }
 }

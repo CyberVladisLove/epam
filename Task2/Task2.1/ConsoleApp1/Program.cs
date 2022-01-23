@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using CustomLib;
 namespace OOP
 {
     class Program
@@ -13,10 +13,10 @@ namespace OOP
         {
             #region        
             //CustomString cs = new CustomString("ss");
-            //CustomString cs1 = new CustomString("sa");
+            //CustomString cs1 = new CustomString("sas");
 
             //CustomString str = cs + cs1;
-            //Console.WriteLine(cs.Concat(cs1));
+            //Console.WriteLine(cs != cs1);
 
 
             //Point p1 = new(0, 0);
@@ -67,7 +67,7 @@ namespace OOP
                 }
             }
         }
-        
+
         public static void AddFigure()
         {
 
