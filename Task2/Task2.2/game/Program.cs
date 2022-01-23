@@ -21,9 +21,9 @@ namespace game
         static void Main(string[] args)
         {
 
-            while(true)
+            while(isOpen)
             {
-                isOpen = true;
+                
                 Console.Clear();
                 Character c = Init();
                 
@@ -33,6 +33,7 @@ namespace game
                     {
                         Console.WriteLine($"{c.Name} собрал все вкусняшки. Победа!");
                         Thread.Sleep(5000);
+                        isOpen = false;
                         break;
                     }
                     KeyController(c);
@@ -56,10 +57,20 @@ namespace game
         private static Character Init()
         {
             Console.WriteLine(
-                "===Введите имя персонажа (рекомендуется: Floppa)===" );
+                "===Введите имя персонажа (рекомендуется: Floppa)===");
 
-            string name = Console.ReadLine();
+            string name;
+            while (true)
+            {
+                name = Console.ReadLine();
+                if (!(name.Length == 0))
+                {
+                    break;
+                }
+                else Console.WriteLine("Введите пожалуйста имя");
+            }
             
+
             Console.WriteLine("\n===Инструкция===\n" +
                 "Цель игры - собрать всю еду на карте\n" +
                 "За вами охотится волк (w), он рандомно блуждает по карте\n" +
@@ -122,8 +133,7 @@ namespace game
                 var keyInfo = Console.ReadKey();
                 switch (keyInfo.KeyChar)
                 {
-                    case 'a':
-                        
+                    case 'a':                   
                         Field.CheckCollision(c, new Point(x - 1, y));                             
                         break;
                     case 'd':
