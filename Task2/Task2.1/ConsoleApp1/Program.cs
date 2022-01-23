@@ -16,22 +16,7 @@ namespace OOP
             //CustomString cs1 = new CustomString("sas");
 
             //CustomString str = cs + cs1;
-            //Console.WriteLine(cs != cs1);
-
-
-            //Point p1 = new(0, 0);
-            //Point p2 = new(1, 0);
-            //Point p3 = new(1, 1);
-            //Point p4 = new(5, 6);
-            //Point p5 = new(10, 8);
-            //Point p6 = new(10, 11);
-
-            //Circle c1 = new(p1, 10);
-            //Ring ring = new(p3, 8, 7);
-            //Rectangle rect = new(p4, p5);
-            //Rectangle sq = new(p1, p3);
-            //Line line = new(p1, p5);
-            //Triangle tgl = new(p1, p2, p3);
+            //Console.WriteLine(cs == cs1);
             #endregion
 
             bool isOpen = true;

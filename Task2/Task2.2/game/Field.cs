@@ -13,7 +13,7 @@ namespace game
 {
     static class Field
     {
-        public static List<Unit> _units = new();
+        private static List<Unit> _units = new();
 
         private static CustomString[] _map =
         {
