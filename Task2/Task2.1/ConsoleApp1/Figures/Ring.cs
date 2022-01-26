@@ -24,7 +24,7 @@ namespace OOP
             get => r_little;
             set 
             {
-                if (r_little >= r || r_little < 0)
+                if (value >= r || value < 0)
                 {
                     Program.ThrowException(this, "внутренний радиус должен быть не отрицательным и меньше внешнего");
                 }

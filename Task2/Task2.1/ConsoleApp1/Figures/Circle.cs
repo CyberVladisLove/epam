@@ -24,7 +24,7 @@ namespace OOP
             get => r;
             set 
             {
-                if (r < 0) Program.ThrowException(this, "радиус не должен быть отрицательным");
+                if (value < 0) Program.ThrowException(this, "радиус не должен быть отрицательным");
                 else r = value;
             }
         }
@@ -43,7 +43,7 @@ namespace OOP
         }
         public override string ToString()
         {
-            return $"Circle - center in {start}; radius: {r}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
+            return $"Circle: center in {start}; radius: {r}; area: {Math.Round(Area, 2)}; length: {Math.Round(Length, 2)}";
         }
     }
 }

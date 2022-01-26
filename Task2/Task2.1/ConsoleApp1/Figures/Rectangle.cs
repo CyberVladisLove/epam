@@ -31,7 +31,7 @@ namespace OOP
             get => diagonalPoint;
             set
             {
-                if (Start.Equals(DiagonalPoint)) Program.ThrowException(this, "совпадение точек");
+                if (Start.Equals(value)) Program.ThrowException(this, "совпадение точек");
                 else diagonalPoint = value;
             }
         }

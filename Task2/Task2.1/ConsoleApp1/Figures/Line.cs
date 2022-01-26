@@ -24,7 +24,7 @@ namespace OOP
             get => finish;
             set
             {
-                if (Start.Equals(Finish)) Program.ThrowException(this, "совпадение точек");
+                if (Start.Equals(value)) Program.ThrowException(this, "совпадение точек");
                 else finish = value;
             }
         }
