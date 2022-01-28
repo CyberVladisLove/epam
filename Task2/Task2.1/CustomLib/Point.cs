@@ -8,25 +8,21 @@ namespace CustomLib
 {
     public class Point
     {
-        private int x;
-        private int y;
 
+        public int X { get; protected set; }
+        public int Y { get; protected set; }
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
+        }
+        public Point(Point p)
+        {
+            X = p.X;
+            Y = p.Y;
         }
 
-        public int X
-        {
-            get { return x; }
-            set { x = value; }
-        }
-        public int Y
-        {
-            get { return y; }
-            set { y = value; }
-        }
+        
         public override bool Equals(object? obj)
         {
             return obj is Point point &&
@@ -48,7 +44,7 @@ namespace CustomLib
         }
         public override string ToString()
         {
-            return $"[{x}, {y}]";
+            return $"[{X}, {Y}]";
         }
         public static double DistanceBetween(Point p1, Point p2)
         {

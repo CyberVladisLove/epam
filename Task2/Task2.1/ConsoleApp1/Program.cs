@@ -12,11 +12,13 @@ namespace OOP
         static void Main(string[] args)
         {
             #region        
-            //CustomString cs = new CustomString("ss");
+            //CustomString cs = new CustomString("sas");
             //CustomString cs1 = new CustomString("sas");
+            //Console.WriteLine(cs.ToString());
+            //cs.PrintInfo();
 
-            //CustomString str = cs + cs1;
-            //Console.WriteLine(cs == cs1);
+
+
             #endregion
 
             bool isOpen = true;
@@ -135,7 +137,13 @@ namespace OOP
                         break;
                 }
             }
-            catch (Exception e)
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(
+                    $"\n{e.Message}\n" +
+                    $"Фигура не была создана :(");
+            }
+            catch (ArgumentException e)
             {
                 Console.WriteLine(
                     $"\n{e.Message}\n" +
@@ -143,14 +151,7 @@ namespace OOP
             }
             Console.WriteLine();
         }
-        public static void ThrowException(Figure fig, string message)
-        {
-            string nameSp = typeof(Program).Namespace;
-
-            //получаю тип сущности и обрезаю название namespace, чтобы например вместо OOP.Entity выводилось просто Entity
-            string typeFigure = fig.GetType().ToString().Replace(nameSp + ".", ""); 
-            throw new Exception($"Ошибка: {message} в фигуре {typeFigure}");
-        }
+        
         static int ReadOnlyNumber()
         {
             while (true)

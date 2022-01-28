@@ -13,7 +13,7 @@ namespace OOP
         {
             if (r_little < 0 || r_little >= r) 
             {
-                Program.ThrowException(this, "внутренний радиус должен быть не отрицательным и меньше внешнего"); 
+                throw new ArgumentOutOfRangeException($"внутренний радиус должен быть не отрицательным и меньше внешнего в фигуре {GetType()}");
             } 
            
             else this.r_little = r_little;
@@ -26,7 +26,7 @@ namespace OOP
             {
                 if (value >= r || value < 0)
                 {
-                    Program.ThrowException(this, "внутренний радиус должен быть не отрицательным и меньше внешнего");
+                    throw new ArgumentOutOfRangeException($"внутренний радиус должен быть не отрицательным и меньше внешнего в фигуре {GetType()}");
                 }
 
                 else r_little = value;

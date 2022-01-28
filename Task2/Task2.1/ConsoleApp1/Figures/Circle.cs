@@ -11,20 +11,20 @@ namespace OOP
         protected double r;
         public Circle(Point start, double r) : base(start)
         {
-            if (r < 0) Program.ThrowException(this, "радиус не должен быть отрицательным");
+            if (r < 0) throw new ArgumentOutOfRangeException($"радиус не должен быть отрицательным в фигуре {GetType()}");
             else this.r = r;
         }
 
         public override Point Start
         {
-            get => start;     
+            get => new Point(start);     
         }
         public double R
         {
             get => r;
             set 
             {
-                if (value < 0) Program.ThrowException(this, "радиус не должен быть отрицательным");
+                if (value < 0) throw new ArgumentOutOfRangeException($"радиус не должен быть отрицательным в фигуре {GetType()}");
                 else r = value;
             }
         }

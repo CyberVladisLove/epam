@@ -12,7 +12,7 @@ namespace OOP
         
         public Figure(Point start)
         {
-            this.start = start;
+            this.start = new Point(start);
         }
         abstract public Point Start { get;}
         abstract public double Area { get; }

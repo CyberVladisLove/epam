@@ -13,19 +13,19 @@ namespace OOP
 
         public Triangle(Point p1, Point p2, Point p3) : base(p1)
         {
-            if (p1.Equals(p2) || p1.Equals(p3) || p2.Equals(p3)) Program.ThrowException(this,"совпадение точек");
-            
+            if (p1==p2 || p1==p3 || p2==p3) throw new ArgumentException($"совпадение точек в фигуре {GetType()}");
+
             else
             {
-                this.p2 = p2;
-                this.p3 = p3;
+                this.p2 = new Point(p2);
+                this.p3 = new Point(p3);
             }
             
         }
 
         public override Point Start
         {
-            get => start;      
+            get => new Point(start);      
         }
         
         //стороны треугольника
@@ -63,13 +63,8 @@ namespace OOP
             }
              
         }
-        public override double Length
-        {
-            get
-            {
-                return A + B + C;
-            }
-        }
+        public override double Length => A + B + C;
+        
 
         public override string DrawMe()
         {

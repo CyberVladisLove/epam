@@ -12,7 +12,7 @@ namespace OOP
 
         public Canvas(List<IDrawable> drawings)
         {
-            this.drawings = drawings;
+            this.drawings = new List<IDrawable>(drawings);
         }
         public void AddDrawings(params IDrawable[] drawings)
         {

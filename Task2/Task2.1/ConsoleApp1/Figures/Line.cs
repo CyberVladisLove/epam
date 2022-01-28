@@ -12,29 +12,27 @@ namespace OOP
 
         public Line(Point start, Point finish) : base(start)
         {
-            if (start.Equals(finish)) Program.ThrowException(this, "совпадение точек");
-            else this.finish = finish;
+            if (start.Equals(finish)) throw new ArgumentException($"совпадение точек в фигуре {GetType()}");
+            else this.finish = new Point(finish);
         }
         public override Point Start
         {
-            get => start;     
+            get => new Point(start);     
         }
         public Point Finish
         {
-            get => finish;
+            get => new Point(finish);
             set
             {
-                if (Start.Equals(value)) Program.ThrowException(this, "совпадение точек");
+                if (Start.Equals(value)) throw new ArgumentException($"совпадение точек в фигуре {GetType()}");
                 else finish = value;
             }
         }
-        public override double Area
-        {
-            get => 0;
-        }
+        public override double Area => 0;
+        
         public override double Length
         {
-            get => Math.Sqrt(Math.Pow((finish.X - start.X),2) + Math.Pow((finish.Y - start.Y), 2));
+            get => Point.DistanceBetween(start, finish);
         }
 
         public override string DrawMe()

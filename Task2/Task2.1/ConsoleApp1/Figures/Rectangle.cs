@@ -13,25 +13,25 @@ namespace OOP
         protected Point diagonalPoint;
         public Rectangle(Point start, Point diagonalPoint) : base(start)
         {
-            if (start.Equals(diagonalPoint)) Program.ThrowException(this, "совпадение точек");
+            if (start.Equals(diagonalPoint)) throw new ArgumentException($"совпадение точек в фигуре {GetType()}");
             if (start.X == diagonalPoint.X || start.Y == diagonalPoint.Y)
             {
-                Program.ThrowException(this, "наклонные прямоугольники в данной версии приложения не поддерживаются");
+                throw new ArgumentException("наклонные прямоугольники в данной версии приложения не поддерживаются");
             }
-            else this.diagonalPoint = diagonalPoint;
+            else this.diagonalPoint = new Point(diagonalPoint);
             
         }
 
         public override Point Start
         {
-            get => start;    
+            get => new Point(start);    
         }
         public Point DiagonalPoint
         {
-            get => diagonalPoint;
+            get => new Point(diagonalPoint);
             set
             {
-                if (Start.Equals(value)) Program.ThrowException(this, "совпадение точек");
+                if (Start.Equals(value)) throw new ArgumentException($"совпадение точек в фигуре {GetType()}");
                 else diagonalPoint = value;
             }
         }
@@ -53,14 +53,10 @@ namespace OOP
             get => new Point(diagonalPoint.X, start.Y);
             
         }
-        public override double Area
-        {
-            get => Width * Height;
-        }
-        public override double Length
-        {
-            get => 2 * (Width + Height);
-        }
+        public override double Area => Width * Height;
+        
+        public override double Length => 2 * (Width + Height);
+        
 
         public override string DrawMe()
         {

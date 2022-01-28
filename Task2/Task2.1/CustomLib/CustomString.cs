@@ -13,17 +13,17 @@ namespace CustomLib
         public CustomString(string str) : this(str.ToCharArray()) { }
         public CustomString(char[] _charArr)
         {
-            this._charArr = _charArr;
+            this._charArr = (char[])_charArr.Clone();
         }
         public char[] CharArr
         {
             get
             {
-                return _charArr;
+                return (char[]) _charArr.Clone();
             }
             set
             {
-                _charArr = value;
+                _charArr = (char[]) _charArr.Clone();
             }
         }
         public int Length
@@ -82,7 +82,7 @@ namespace CustomLib
         #region
         public bool Contains(char ch)
         {
-            return Contains(new CustomString(new char[] { ch }));
+            return _charArr.Contains(ch);
         }
         public bool Contains(char[] _charArr)
         {
@@ -152,7 +152,7 @@ namespace CustomLib
 
         public char[] ToCharArray()
         {
-            return _charArr;
+            return (char[])_charArr.Clone();
         }
 
 
@@ -174,7 +174,7 @@ namespace CustomLib
         //считает сколько раз встречается каждый символ и возвращает результат, отсортированный по алфавиту 
         public Dictionary<char, int> GetCountOfEachChar()
         {
-            var result = ToString()
+            var result = _charArr
                         .GroupBy(ch => ch)
                         .OrderBy(ch => ch.Key)
                         .ToDictionary(ch => ch.Key, ch => ch.Count());
@@ -201,11 +201,8 @@ namespace CustomLib
 
         public override string ToString()
         {
-            if (Length == 0) return "";
-            StringBuilder sb = new();
-            foreach (char ch in _charArr) sb.Append(ch);
 
-            return sb.ToString();
+            return new string(_charArr);
         }
 
 
