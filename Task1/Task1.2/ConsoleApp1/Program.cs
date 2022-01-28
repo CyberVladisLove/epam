@@ -11,17 +11,17 @@ namespace ConsoleApp1
         static void Main(string[] args)
 
         {
-            averages();           //2.1
-            doubler();            //2.2
-            lowercase();          //2.3
-            validator();          //2.4
+            Averages();           //2.1
+            Doubler();            //2.2
+            Lowercase();          //2.3
+            Validator();          //2.4
         }
 
-        static void averages()          //2.1
+        static void Averages()          //2.1
         {
             Console.WriteLine("===2.1=== ");
             Console.WriteLine("Input str: ");
-            String str = Convert.ToString(Console.ReadLine());
+            String str = Console.ReadLine();
             char[] separators = new char[] { ' ', '.', ',', '-', '!', '?', '"', ';', ':' };
             string[] words = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
@@ -36,13 +36,13 @@ namespace ConsoleApp1
             aveLength /= words.Length;
             Console.WriteLine($"Average length: {Math.Round(aveLength, 2)}");
         }
-        static void doubler()           //2.2
+        static void Doubler()           //2.2
         {
             Console.WriteLine("===2.2=== ");
             Console.WriteLine("Input str1: ");
-            String str1 = Convert.ToString(Console.ReadLine());
+            String str1 = Console.ReadLine();
             Console.WriteLine("Input str2: ");
-            String str2 = Convert.ToString(Console.ReadLine());
+            String str2 = Console.ReadLine();
 
             StringBuilder res = new StringBuilder();
 
@@ -57,11 +57,11 @@ namespace ConsoleApp1
 
             Console.WriteLine("res: " + res);
         }
-        static void lowercase()         //2.3
+        static void Lowercase()         //2.3
         {
             Console.WriteLine("===2.3=== ");
             Console.WriteLine("Input str1: ");
-            string str1 = Convert.ToString(Console.ReadLine());
+            string str1 = Console.ReadLine();
             char[] separators = new char[] { ' ', '.', ',', '-', '!', '?', '"', ';', ':' };
             string[] words = str1.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             int count = 0;
@@ -76,11 +76,11 @@ namespace ConsoleApp1
 
             Console.WriteLine("count of lowercase words: " + count);
         }
-        static void validator()         //2.4
+        static void Validator()         //2.4
         {
             Console.WriteLine("===2.4=== ");
             Console.WriteLine("Input str: ");
-            string str = Convert.ToString(Console.ReadLine());
+            string str = Console.ReadLine();
             char[] separators = new char[] { '.', '!', '?' };
 
 
