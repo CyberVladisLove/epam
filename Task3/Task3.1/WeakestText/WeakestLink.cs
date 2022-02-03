@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CustomLib;
 
@@ -29,33 +30,32 @@ namespace WeakestText
             }
 
             List<int> humans = new();
-            Console.WriteLine("Изначально: ");
+            
             for (int i = 1; i <= n; i++)
             {
-                humans.Add(i);
-                Console.Write(humans[i - 1] + " ");
+                humans.Add(i);  
             }
-            Console.WriteLine();
-            int raund = 1;
-            int count = humans.Count;
-            int a = 0;
-            while (raund != 6)
+            int raund = 0;
+            
+            while (humans.Count >= num - 1)
             {
-
-                for (int i = num + a; i <= count; i += num * raund)
+                
+                Console.Write($"Raund №{raund++}: Людей осталось: {humans.Count}\tСписок: [ ");
+                List<int> forRemove = new();
+                IEnumerator<int> humansEnumerator = humans.GetEnumerator();
+                int i = 1;
+                while (humansEnumerator.MoveNext())
                 {
-                    humans.Remove(i);
-
+                    var item = humansEnumerator.Current;
+                    if (i++ % num == 0) forRemove.Add(item);   
+                    Console.Write(item + " ");         
                 }
-                a += raund;
-
-                Console.WriteLine("Раунд №" + raund);
-                raund++;
-                foreach (var i in humans)
-                {
-                    Console.Write(i + " ");
-                }
-                Console.WriteLine();
+                Console.WriteLine("]");
+                
+                if (humans.Count == num - 1) { Console.WriteLine("Далее вычеркивание невозможно"); break; } 
+                humans.RemoveAll(x => forRemove.Contains(x));
+                Thread.Sleep(200);
+                
             }
         }
     }
