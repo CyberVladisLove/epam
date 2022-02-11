@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Array
 {
@@ -8,33 +9,27 @@ namespace Array
     {
         static void Main(string[] args)
         {
-            A boba = new A("boba");
+            A boba = new A("aboba");
             A amogus = new A("amogus");
             List<A> list1 = new List<A> { boba, amogus };
-            
             DynamicArray<A> arr = new(list1);
-
-
-            var array = arr.ToArray();
+            DynamicArray<A> arrClone = (DynamicArray<A>)arr.Clone();
+            boba.name = "amigos";
             
-            var arr2 = (DynamicArray < A > )arr.Clone();
-            foreach (var elem in array)
+            
+            foreach (var elem in arr)
             {
                 Console.Write(elem + " ");
             }
-            boba.name = "an4ous";
-            foreach (var elem in array)
-            {
-                Console.Write(elem + " ");
-            }
-            //Console.WriteLine(arr.Capacity);
-            //Console.WriteLine(arr.Count);
-            //arr.Remove("d");
-            ////arr.Remove("d");
-            //Console.WriteLine("after remove: " + arr);
-            //Console.WriteLine(arr.Capacity);
-            //Console.WriteLine(arr.Count);
+            Console.WriteLine("\nCap arr:" + arr.Capacity);
+            Console.WriteLine("Count arr:" + arr.Count);
 
+            foreach (var elem in arrClone)
+            {
+                Console.Write(elem + " ");
+            }
+            Console.WriteLine("\nCap arrClone:" + arrClone.Capacity);
+            Console.WriteLine("Count arrClone:" + arrClone.Count);
 
         }
     }

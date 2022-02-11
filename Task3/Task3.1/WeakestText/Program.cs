@@ -10,6 +10,8 @@ namespace WeakestText
         static void Main(string[] args)
         {
             WeakestLink.Run();
+            TextAnalysis.Run();
+            
 
         }
     }

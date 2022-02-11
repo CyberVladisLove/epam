@@ -10,7 +10,8 @@ namespace Array
     public static class DynamicArrayExtensions
     {
         //работает если установить Newtonsoft.Json;
-        //расширение позволяет нормально клонировать DynamicArray, чтобы массив нового объекта не имел ссылки на элементы массива в старом объекте
+        //расширение позволяет нормально клонировать DynamicArray, чтобы клон не содержал ссылки на элементы старого DynamicArray
+        //вынес сюда чтобы поупражняться с расширениями
         public static DynamicArray<T> UltraClone<T>(this DynamicArray<T> obj)
         {
             string json = JsonConvert.SerializeObject(obj);

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Array
 {
+    //класс для проверки инкапсуляции в DynamicArray
     class A
     {
+        
         public string name;
 
         public A(string name)

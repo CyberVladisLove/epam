@@ -25,10 +25,9 @@ namespace Array
         {
             _count = collection.Count();
             
-            if (_count <= 4) _value = new T[4];
+            if (_count <= 4) _value = new T[4];//как в листах мин значение поставил 4
             else _value = new T[CalculateCapacity(_count)];
-               
-            
+                      
             int i = 0;
             foreach (var elem in collection)
             {
@@ -39,32 +38,32 @@ namespace Array
         public int Capacity
         {
             get => _value.Length;
+
+            //принудительная установка Capacity
             set
             {  
-                if (value <= 4) Recreate(4);
-                else Recreate(value);
+                if (value <= 4) ReCopy(4);
+                else ReCopy(value);
             }
         } 
-        public int Count => _count;
+        public int Count => _count; //назвал Count своим именем,тк нагляднее чем Length как в задании))
         
         public T this[int index]
         {
 
             get 
             {
-                if (Math.Abs(index) >= Capacity)
-                {
+                if (Math.Abs(index) >= Capacity) //проверка на выход за границы Capacity, модуль позволяет учитывать отрицательный индекс 
                     throw new ArgumentOutOfRangeException();
-                }
-                else if (index < 0) return _value[_count + index];//доступ через отрицательный индекс
+                
+                else if (index < 0) return _value[_count + index]; //доступ через отрицательный индекс
                 else return _value[index];
             }
             set 
             {
                 if (Math.Abs(index) >= Capacity)
-                {
                     throw new ArgumentOutOfRangeException();
-                }
+                
                 else _value[index] = value;
             }
             
@@ -72,7 +71,7 @@ namespace Array
         
         public void Add(T elem)
         {
-            if (Count == Capacity) Recreate(CalculateCapacity(Count + 1));
+            if (Count == Capacity) ReCopy(CalculateCapacity(Count + 1));
             
             _value[_count++] = elem;
             
@@ -82,7 +81,7 @@ namespace Array
             if (Count + collection.Count() > Capacity) 
             { 
                 int newCapacity = CalculateCapacity(Count + collection.Count());
-                Recreate(newCapacity);
+                ReCopy(newCapacity);
             } 
   
             foreach (var elem in collection)
@@ -96,7 +95,7 @@ namespace Array
             {
                 if (_value[i].Equals(elem))
                 {
-                    Recreate(Capacity, i);
+                    ReCopy(Capacity, i);
                     _count--;
                     return true;
                 }
@@ -111,13 +110,13 @@ namespace Array
                 throw new ArgumentOutOfRangeException();         
             }
            _count++;
-           Recreate(CalculateCapacity(_count), index, elem);
+            ReCopy(CalculateCapacity(_count), index, elem);
 
             return true;
             
         }
 
-        //определяет нужный размер capacity в зависимости от count, путем удвоения capacity 
+        //определяет нужный размер capacity в зависимости от count, путем удвоения текущего capacity 
         protected int CalculateCapacity(int count)
         {
             if (Capacity > count) return Capacity;
@@ -126,25 +125,31 @@ namespace Array
             {
                 newCapacity *= 2;
                 if (newCapacity >= count) return newCapacity;
-            }       
+            }
         }
-        //пересоздает массив с новым capacity и копирует элементы из старого в новый 
-        protected void Recreate(int capacity)
+        //пересоздает массив с новым capacity 
+        protected T[] ReCreate(int capacity)
         {
-            
-            var newValue = new T[capacity];
             if (capacity < Count) _count = capacity;
+            return new T[capacity];
+        }
+
+        
+        //перекопирует элементы
+        protected void ReCopy(int capacity)
+        {
+            T[] newValue = ReCreate(capacity);
 
             for (int i = 0; i < Count; i++)
-            {
                 newValue[i] = _value[i];
-            }
+
             _value = newValue;
         }
-        protected void Recreate(int capacity, int IndexOfRemoveElem)
+        //перекопирует и вставляет один элемент
+        protected void ReCopy(int capacity, int IndexOfRemoveElem)
         {
-            var newValue = new T[capacity];
-
+            T[] newValue = ReCreate(capacity);
+            
             for (int i = 0, j = 0; i < Count; i++)
             {
                 if (i == IndexOfRemoveElem) continue;
@@ -153,10 +158,11 @@ namespace Array
             }
             _value = newValue;
         }
-        protected void Recreate(int capacity, int IndexOfInsertElem, T elem)
+        //перекопирует и удаляет один элемент
+        protected void ReCopy(int capacity, int IndexOfInsertElem, T elem)
         {
-            var newValue = new T[capacity];
-
+            T[] newValue = ReCreate(capacity);
+            
             for (int i = 0, j = 0; i < Count; i++, j++)
             {
                 if (j == IndexOfInsertElem)
@@ -168,27 +174,20 @@ namespace Array
             }
             _value = newValue;
         }
-        //protected void Recreate(int capacity, Func<T[], T[]> action)
-        //{
-        //    var newValue = new T[capacity];
+        //!вопрос! - можно и нужно ли было обойтись без перегрузки метода ReСopy, тк наблюдается частичный копипаст кода? например попытавшись сделать делегат под эти операции.
+        //у меня не вышло придумать норм делегат, хотя операции перекопирования вроде бы похожи
 
-
-        //    for (int i = 0; i < Count; i++)
-        //    {
-        //        newValue[i] = _value[i];
-        //    }
-        //    _value = action(newValue);
-        //}
-        
 
         public virtual IEnumerator<T> GetEnumerator()
         {
-            foreach (var elem in _value) yield return elem;
+            for(int i = 0; i < Count; i++)
+                yield return this[i];  
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (var elem in _value) yield return elem;
+            for (int i = 0; i < Count; i++)
+                yield return this[i];
         }
 
         public object Clone()

@@ -9,26 +9,17 @@ namespace Array
 {
     public class CycledDynamicArray<T> : DynamicArray<T>
     {
-        public CycledDynamicArray()
-        {
-        }
-        public CycledDynamicArray(int capacity) : base(capacity)
-        {
-        }
-        public CycledDynamicArray(IEnumerable<T> collection) : base(collection)
-        {
-        }
-
+        public CycledDynamicArray() : base() { }
+        public CycledDynamicArray(int capacity) : base(capacity) { }
+        public CycledDynamicArray(IEnumerable<T> collection) : base(collection) { }
         
-
         public override IEnumerator<T> GetEnumerator()
         {
             while (true) 
             {
                 for (int i = 0; i < Count; i++) yield return this[i];
-                //Thread.Sleep(500);
+                //Thread.Sleep(200);
             }
         }
-
     }
 }
