@@ -10,13 +10,11 @@ namespace Array
     public class DynamicArray<T> : IEnumerable, IEnumerable<T>, ICloneable
     {
 
-        private T[] _value;
+        private T[] _value = new T[8];
         private int _count = 0;
 
-        public DynamicArray()
-        {
-            _value = new T[8];
-        }
+        public DynamicArray() { }
+        
         public DynamicArray(int capacity)
         {
             _value = new T[capacity];
@@ -38,6 +36,8 @@ namespace Array
         public int Capacity
         {
             get => _value.Length;
+                
+            
 
             //принудительная установка Capacity
             set
@@ -53,7 +53,7 @@ namespace Array
 
             get 
             {
-                if (Math.Abs(index) >= Capacity) //проверка на выход за границы Capacity, модуль позволяет учитывать отрицательный индекс 
+                if (Math.Abs(index) >= Count) //проверка на выход за границы Count, модуль позволяет учитывать отрицательный индекс 
                     throw new ArgumentOutOfRangeException();
                 
                 else if (index < 0) return _value[_count + index]; //доступ через отрицательный индекс
@@ -61,7 +61,7 @@ namespace Array
             }
             set 
             {
-                if (Math.Abs(index) >= Capacity)
+                if (Math.Abs(index) >= Count+1)
                     throw new ArgumentOutOfRangeException();
                 
                 else _value[index] = value;
@@ -105,7 +105,7 @@ namespace Array
         }
         public bool Insert(int index, T elem)
         {
-            if (index < 0 || index > Capacity)
+            if (index < 0 || index > Count)
             {
                 throw new ArgumentOutOfRangeException();         
             }
@@ -204,11 +204,10 @@ namespace Array
         {
             if (Count == 0) return "";
             StringBuilder sb = new();
-            sb.Append(this[0]);
-            for (int i = 1; i < Count; i++)
-            {
-                sb.Append(',').Append(_value[i]);
-            }
+
+            for(int i = 0; i< Count; i++)
+                sb.Append(this[i]).Append(' ');
+                  
             return sb.ToString();
         }
     }

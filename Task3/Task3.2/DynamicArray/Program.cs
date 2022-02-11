@@ -9,28 +9,44 @@ namespace Array
     {
         static void Main(string[] args)
         {
-            A boba = new A("aboba");
-            A amogus = new A("amogus");
-            List<A> list1 = new List<A> { boba, amogus };
-            DynamicArray<A> arr = new(list1);
-            DynamicArray<A> arrClone = (DynamicArray<A>)arr.Clone();
-            boba.name = "amigos";
             
+            //A boba = new A("aboba");
+            //A amogus = new A("amogus");
+            //List<A> list1 = new List<A> { boba, amogus,boba, boba, amogus, boba,boba, amogus, boba,boba, amogus, boba };
+            //List<A> list2 = new List<A> {new A("barabashka") };
+            List<int> list1 = new List<int> { 1,2,3 };
+
+            Console.WriteLine("===Создание массива===");
+            DynamicArray<int> arr = new(list1);
             
-            foreach (var elem in arr)
-            {
-                Console.Write(elem + " ");
-            }
-            Console.WriteLine("\nCap arr:" + arr.Capacity);
-            Console.WriteLine("Count arr:" + arr.Count);
+            PrintInfo(arr);
 
-            foreach (var elem in arrClone)
-            {
-                Console.Write(elem + " ");
-            }
-            Console.WriteLine("\nCap arrClone:" + arrClone.Capacity);
-            Console.WriteLine("Count arrClone:" + arrClone.Count);
+            Console.WriteLine("===Add(4)===");
+            arr.Add(4);
+            PrintInfo(arr);
 
+            Console.WriteLine("===AddRange(5,6)===");
+            arr.AddRange(new List<int>() {5,6});
+            PrintInfo(arr);
+
+            Console.WriteLine("===Insert(4,555)===");
+            arr.Insert(4,555);
+            PrintInfo(arr);
+
+            Console.WriteLine("===Remove(1)===");
+            arr.Remove(1);
+            PrintInfo(arr);
+
+            
+
+        }
+        public static void PrintInfo<T>(DynamicArray<T> arr)
+        {
+            //Console.WriteLine(arr.ToString());
+            foreach (var item in arr) Console.Write(item + " ");
+            Console.WriteLine("\nCapacity = " + arr.Capacity);
+            Console.WriteLine("Count = " + arr.Count);
+            Console.WriteLine();
         }
     }
 }
