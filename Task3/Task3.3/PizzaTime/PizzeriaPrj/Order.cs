@@ -10,8 +10,8 @@ namespace PizzaTime.PizzeriaPrj
     {
         public event Action OnReady = delegate { };
 
-        
         public int num;
+
         List<Pizza> composition = new();
         public string status = "в процессе";
 

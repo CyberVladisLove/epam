@@ -37,8 +37,6 @@ namespace Array
             arr.Remove(1);
             PrintInfo(arr);
 
-            
-
         }
         public static void PrintInfo<T>(DynamicArray<T> arr)
         {

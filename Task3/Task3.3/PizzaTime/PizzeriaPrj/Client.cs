@@ -8,8 +8,8 @@ namespace PizzaTime.PizzeriaPrj
 {
     public class Client
     {
-        string name;
-        Order order;
+        public string name;
+        public Order order;
 
         
         public Client(string name, Order order)

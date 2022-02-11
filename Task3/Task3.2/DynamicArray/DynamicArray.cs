@@ -186,8 +186,7 @@ namespace Array
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            for (int i = 0; i < Count; i++)
-                yield return this[i];
+            return GetEnumerator();
         }
 
         public object Clone()
