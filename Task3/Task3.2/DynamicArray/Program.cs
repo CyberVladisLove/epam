@@ -29,8 +29,8 @@ namespace Array
             arr.AddRange(new List<int>() {5,6});
             PrintInfo(arr);
 
-            Console.WriteLine("===Insert(4,555)===");
-            arr.Insert(4,555);
+            Console.WriteLine("===Insert(6,555)===");
+            arr.Insert(6,555);
             PrintInfo(arr);
 
             Console.WriteLine("===Remove(1)===");

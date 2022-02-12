@@ -10,11 +10,11 @@ namespace PizzaTime
     {
         public static void Run()
         {
-            int[] intArr = new int[5] { 1, 4, 4, 5, 5 };
+            int[] intArr = new int[5] { 1, 2, 5, 5, 5 };
             float[] flaotArr = new float[5] { 1f, 2f, 5f, 4f, 5f };
 
-            intArr.ApplyToArray(Divide2);
-            flaotArr.ApplyToArray(Divide2);
+            //intArr.ApplyToArray(Divide2);
+            //flaotArr.ApplyToArray(Divide2);
 
             foreach (var a in intArr) Console.Write(a + " ");
             Console.WriteLine();

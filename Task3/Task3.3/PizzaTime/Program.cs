@@ -8,9 +8,9 @@ namespace PizzaTime
     {
         public static void Main(string[] args)
         {
-            //SuperArray.Run();
+            SuperArray.Run();
             //SuperString.Run();
-            Terminal.Run();
+            //Terminal.Run();
         }
     }
 }
