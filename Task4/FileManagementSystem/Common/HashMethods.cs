@@ -20,15 +20,15 @@ namespace FileManagementSystem.Common
             return BitConverter.ToString(checkSum)
                                .Replace("-", string.Empty);
         }
-        public static string GetStringHash(string str)
+        public static string GetStringHash(string str)//хеш значение строки
         {
             MD5 md5 = MD5.Create();
             byte[] bytes = Encoding.UTF8.GetBytes(str);
 
             return BitConverter.ToString(md5.ComputeHash(bytes))
-                               .Replace("-", String.Empty);
+                               .Replace("-", string.Empty);
         }
-        public static string GetFolderHash(string folder)
+        public static string GetFolderHash(string folder)//хеш значение папки
         {
             string[] files = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
             string[] directories = Directory.GetDirectories(folder, "*.*", SearchOption.AllDirectories);

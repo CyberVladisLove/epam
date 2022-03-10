@@ -14,7 +14,7 @@ namespace FileManagementSystem.MonitoringMode
         
 
 
-        public static void Run()
+        public static void Invoke()
         {
 
             if (!File.Exists(Paths.journal))
@@ -41,14 +41,14 @@ namespace FileManagementSystem.MonitoringMode
             }
             else Console.WriteLine("Изменений не обнаружено");
         }
-        private static void CreateGit()
+        private static void CreateGit() //создание нужных папок и файлов
         {
             File.Create(Paths.journal).Dispose();  
             Directory.CreateDirectory(Paths.versions);
             Console.WriteLine("Гит создан");
         }
 
-        private static void InitGit()
+        private static void InitGit() //создание первой версии папки (init commit)
         {
             string currentFolderHashSum = HashMethods.GetFolderHash(Paths.folder);
             FileMethods.WriteRecordToJournal(currentFolderHashSum);
