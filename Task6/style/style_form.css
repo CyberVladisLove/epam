@@ -1,0 +1,33 @@
+
+.form{
+  width: 350px;
+  height: 275px;
+  background-color: #0690CF;
+  border: 3px solid #0075B2;
+  margin: 10px;
+  color: #FFFFFF;
+  font-family: sans-serif;
+}
+.form > span{
+  font-size: 140%;
+  display: block;
+  margin: 18px 10px 10px 20px;
+}
+.form > div{
+  margin: 30px 10px 0px 20px;
+  display: inline-block;
+}
+input{
+  width: 134px;
+  height: 18px;
+  display: block;
+}
+#inputEmail{
+  width: 306px;
+}
+#inputButton{
+  width: 90px;
+  height: 26px;
+  background-color: #FFDF7F;
+  border: 0px;
+}
