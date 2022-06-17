@@ -15,7 +15,7 @@ class Storage {
       this.list.splice(id, 1);
     }
     updateById(id, val){
-      this.list[id] = this.list[id] + val;
+      this.list[id] = val;
     }
     replaceById(id, val){
       this.list[id] = val;
